@@ -18,6 +18,7 @@ public class BasePage {
       public WebDriver driver;
 
       protected void clickOnElement(By locator){
+            waitForElementToBeVisible(locator);
             getDriver().findElement(locator).click();
       }
 
@@ -26,6 +27,14 @@ public class BasePage {
             wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
       }
 
+      protected void typeText(String text, By locator){
+            waitForElementToBeVisible(locator);
+            getDriver().findElement(locator).sendKeys(text);
+      }
 
+      protected String getElementText(By locator){
+            waitForElementToBeVisible(locator);
+           return  getDriver().findElement(locator).getText();
+      }
 
 }
