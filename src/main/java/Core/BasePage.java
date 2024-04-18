@@ -28,4 +28,8 @@ public class BasePage extends Properties{
            return  getDriver().findElement(locator).getText();
       }
 
+      protected String getLocator(String locator, String arg){
+         return  locator.replace("%ARG%", arg);
+      }
+
 }
