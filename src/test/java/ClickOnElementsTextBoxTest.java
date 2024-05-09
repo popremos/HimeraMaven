@@ -5,12 +5,9 @@ import org.junit.jupiter.api.Test;
 
 
 /**
- * This tests opens "demoqa..." and clicks on "Elements" section
- *
- *
- * @author vgasic
+
  */
-public class ClickOnElementsTest extends DemoQaHomepage {
+public class ClickOnElementsTextBoxTest extends DemoQaHomepage {
 
 
     @BeforeEach
@@ -19,11 +16,11 @@ public class ClickOnElementsTest extends DemoQaHomepage {
         getDriver().navigate().to("https://demoqa.com");
     }
 
+
     @Test
     public void test(){
         DemoQaHomepage demo = new DemoQaHomepage();
-        demo.clickOnElements().verifyElementsListIsVisible()
-                .verifyElementsMenuOptionsCount();
+        demo.clickOnElements().clickOnTextBox();
     }
 
     @AfterEach
