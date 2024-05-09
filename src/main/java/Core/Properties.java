@@ -8,35 +8,38 @@ import java.time.Duration;
 
 public class Properties {
 
-    public static  WebDriver driver;
-    public static WebDriver getDriver() {
-        return driver;
-    }
+	public static WebDriver driver;
 
-    public static void setDriver(WebDriver driver) {
-        Properties.driver = driver;
-    }
+	public static WebDriver getDriver() {
+		return driver;
+	}
 
-    private static final String CHROME_DRIVER = "webdriver.chrome.driver";
-    private static final String CHROME_DRIVER_PATH = "src\\main\\resources\\chromedriver.exe";
-    public static void createDriver(){
-        if (getDriver() == null){
-            System.setProperty(CHROME_DRIVER, CHROME_DRIVER_PATH);
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("disable-infobars");
-            options.addArguments("start-maximized");
-            options.addArguments("--disable-notifications");
+	public static void setDriver(WebDriver driver) {
+		Properties.driver = driver;
+	}
 
-            driver = new ChromeDriver(options);
+	private static final String CHROME_DRIVER = "webdriver.chrome.driver";
+	private static final String CHROME_DRIVER_PATH = "src\\main\\resources\\chromedriver.exe";
 
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+	public static void createDriver() {
+		if (getDriver() == null) {
+			System.setProperty(CHROME_DRIVER, CHROME_DRIVER_PATH);
+			ChromeOptions options = new ChromeOptions();
+			options.addArguments("disable-infobars");
+			options.addArguments("start-maximized");
+			options.addArguments("--disable-notifications");
 
-            setDriver(driver);
-        }
-    }
-    public static void quitDriver(){
-        getDriver().quit();
-        setDriver(null);
-    }
+			driver = new ChromeDriver(options);
+
+			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+			driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(15));
+
+			setDriver(driver);
+		}
+	}
+
+	public static void quitDriver() {
+		getDriver().quit();
+		setDriver(null);
+	}
 }

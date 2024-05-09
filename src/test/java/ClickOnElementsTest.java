@@ -3,7 +3,6 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-
 /**
  * This tests opens "demoqa..." and clicks on "Elements" section
  *
@@ -12,23 +11,22 @@ import org.junit.jupiter.api.Test;
  */
 public class ClickOnElementsTest extends DemoQaHomepage {
 
+	@BeforeEach
+	public void setUp() {
+		createDriver();
+		getDriver().navigate().to("https://demoqa.com");
+	}
 
-    @BeforeEach
-    public void setUp(){
-        createDriver();
-        getDriver().navigate().to("https://demoqa.com");
-    }
+	@Test
+	public void test() {
+		DemoQaHomepage demo = new DemoQaHomepage();
+		demo.clickOnElements().verifyElementsListIsVisible()
+				.verifyElementsMenuOptionsCount();
+	}
 
-    @Test
-    public void test(){
-        DemoQaHomepage demo = new DemoQaHomepage();
-        demo.clickOnElements().verifyElementsListIsVisible()
-                .verifyElementsMenuOptionsCount();
-    }
-
-    @AfterEach
-    public void close(){
-      quitDriver();
-    }
+	@AfterEach
+	public void close() {
+		quitDriver();
+	}
 
 }
