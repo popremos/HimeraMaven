@@ -36,6 +36,7 @@ public class Properties {
 
 			setDriver(driver);
 		}
+
 	}
 
 	public static void quitDriver() {

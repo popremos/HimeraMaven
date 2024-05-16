@@ -1,9 +1,6 @@
 package Core;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -11,6 +8,7 @@ import java.time.Duration;
 import java.util.List;
 
 public class BasePage extends Properties {
+
 
 	protected void clickOnElement(By locator) {
 		waitForElementToBeVisible(locator);
@@ -31,6 +29,25 @@ public class BasePage extends Properties {
 	protected String getElementText(By locator) {
 		waitForElementToBeVisible(locator);
 		return getDriver().findElement(locator).getText();
+	}
+
+	protected void switchToNewTab(){
+		getDriver().switchTo().newWindow(WindowType.TAB);
+	}
+
+	protected void switchToNewWindow(){
+		getDriver().switchTo().newWindow(WindowType.WINDOW);
+//		Set<String> handles = getDriver().getWindowHandles();
+//		driver.switchTo().window((String) handles.toArray()[1]);
+	}
+
+//	protected void switchToMainWindow(){
+//		getDriver().switchTo().window(originalWindow);
+//		final String originalWindow = getDriver().getWindowHandle();
+//	}
+
+	protected void switchToMainPageContent(){
+		getDriver().switchTo().defaultContent();
 	}
 
 	protected String getLocator(String locator, String vrednost) {
@@ -66,4 +83,5 @@ public class BasePage extends Properties {
 				.findElements(By.xpath(locator));
 		return webElements.size();
 	}
+
 }
